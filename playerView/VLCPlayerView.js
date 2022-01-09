@@ -95,6 +95,7 @@ export default class VLCPlayerView extends Component {
       closeFullScreen,
       showBack,
       showTitle,
+      alwaysShowControls,
       videoAspectRatio,
       showGoLive,
       onGoLivePress,
@@ -207,7 +208,7 @@ export default class VLCPlayerView extends Component {
             )}
             <View style={{ justifyContent: 'center', flex: 1, marginRight: 10 }}>
               {showTitle &&
-                showControls && (
+                (showControls || alwaysShowControls) && (
                   <Text style={{ color: '#fff', fontSize: 16 }} numberOfLines={1}>
                     {title}
                   </Text>
@@ -226,7 +227,7 @@ export default class VLCPlayerView extends Component {
           </View>
         </View>
         <View style={[styles.bottomView]}>
-          {showControls && (
+          {(showControls || alwaysShowControls) && (
             <ControlBtn
               //style={isFull?{width:deviceHeight}:{}}
               showSlider={!isGG}
@@ -256,7 +257,10 @@ export default class VLCPlayerView extends Component {
               }}
               showGoLive={showGoLive}
               onGoLivePress={onGoLivePress}
-              onReplayPress={onReplayPress}
+              onReplayPress={() => {
+                console.log("kk")
+                this.vlcPlayer.seek(0)
+              }}
               titleGolive={titleGolive}
               showLeftButton={showLeftButton}
               showMiddleButton={showMiddleButton}
@@ -394,14 +398,7 @@ export default class VLCPlayerView extends Component {
    * @param event
    */
   onProgress(event) {
-    /* console.log(
-     'position=' +
-     event.position +
-     ',currentTime=' +
-     event.currentTime +
-     ',remainingTime=' +
-     event.remainingTime,
-     );*/
+    // console.log("onProgress", event);
     let currentTime = event.currentTime;
     let loadingSuccess = false;
     if (currentTime > 0 || this.state.currentTime > 0) {

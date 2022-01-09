@@ -90,10 +90,10 @@ export default class ControlBtn extends Component {
                       style={{ width: 50, alignItems: 'center', justifyContent: 'center' }}>
                       <Icon name={'replay'} size={30} color="#fff" />
                     </TouchableOpacity>
-                  ) : <View style={{ width: 50 }} />
+                  ) : <View style={{ width: 0 }} />
                 }
                 <Text
-                  style={{ fontSize: 11, color: '#fff' }}>       </Text>
+                  style={{ fontSize: 11, color: '#fff' }}></Text>
               </View>
 
               {
@@ -109,7 +109,7 @@ export default class ControlBtn extends Component {
                 )
               }
 
-              {/* {showSlider && totalTime > 0 &&(
+              {showSlider && totalTime > 0 &&(
                 <View
                   style={{
                     flex: 1,
@@ -145,7 +145,7 @@ export default class ControlBtn extends Component {
                   </Text>
                   </View>
                 </View>
-              )} */}
+              )}
 
               <View style={styles.right}>
                 <TouchableOpacity
@@ -154,7 +154,7 @@ export default class ControlBtn extends Component {
                     onGoLivePress && onGoLivePress();
                   }}>
                   <Text
-                    style={{ fontSize: 11, color: '#fff' }}>{showGoLive ? titleGolive : '       '}</Text>
+                    style={{ fontSize: 11, color: '#fff' }}>{showGoLive ? titleGolive : ''}</Text>
                 </TouchableOpacity>
                 {
                   showRightButton ? (
@@ -166,7 +166,7 @@ export default class ControlBtn extends Component {
                       style={{ width: 50, alignItems: 'center', justifyContent: 'center' }}>
                       <Icon name={isFull ? 'fullscreen-exit' : 'fullscreen'} size={30} color="#fff" />
                     </TouchableOpacity>
-                  ) : <View style={{ width: 50 }} />
+                  ) : <View style={{ width: 0 }} />
                 }
               </View>
 
