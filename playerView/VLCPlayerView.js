@@ -325,7 +325,7 @@ export default class VLCPlayerView extends Component {
       }, () => {
         this.setState({
           paused: false,
-          isLoading: false,
+          // isLoading: false,
         });
       });
       this.bufferInterval = null;
